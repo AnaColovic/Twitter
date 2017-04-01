@@ -21,14 +21,13 @@ public class TwitterPoruka {
 	return korisnik;
 	}
 	/**
-	 * Meotda koja postavlja vrednost atributa korisnik na prosledjenu vrednost samo ako:
-	 * <ul>
-	 * <li> korisnik nije null vrednost
-	 * <li> korisnik nije prazan String
-	 * </ul>
-	 * U suprotnom:
-	 * @throws java.lang.RuntimeException
+	 * Meotda koja postavlja vrednost atributa korisnik na prosledjenu vrednost
 	 * @param korisnik predstavlja vrednost na koju koju zelimo da postavimo atribut korisnik
+	 * @throws java.lang.RuntimeException ako je prosledjeni korisnik: 
+	 * <ul>
+	 * <li> null vrednost
+	 * <li> prazan String
+	 * </ul>
 	 */
 	public void setKorisnik(String korisnik) {
 	if (korisnik==null || korisnik.isEmpty())
@@ -43,15 +42,14 @@ public class TwitterPoruka {
 	return poruka;
 	}
 	/**
-	 * Metoda koja postavlja vrednost atributa poruka na prosledjenu vrednost samo ako:
-	 * <ul>
-	 * <li> poruka nije null vrednost
-	 * <li> poruka nije prazan String
-	 * <li> poruka nije String duzi od 140 znakova
-	 * </ul>
-	 * U suprotnom:
-	 * @throws java.lang.RuntimeException
+	 * Metoda koja postavlja vrednost atributa poruka na prosledjenu vrednost
 	 * @param poruka predstavlja vrednost na koju zelimo da postavimo atribut poruka
+	 * @throws java.lang.RuntimeException ako je prosledjena poruka: 
+	 * <ul>
+	 * <li> null vrednost
+	 * <li> prazan String
+	 * <li> String duzi od 140 znakova
+	 * </ul>
 	 */
 	public void setPoruka(String poruka) {
 	if (poruka==null || poruka.isEmpty() || poruka.length()>140)
