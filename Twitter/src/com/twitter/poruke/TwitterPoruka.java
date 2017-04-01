@@ -63,7 +63,11 @@ public class TwitterPoruka {
 	public String toString(){
 	return "KORISNIK:"+korisnik+" PORUKA:"+poruka;
 	} 
-	
+	/**
+	 * Poredi dva objekta klase TwitterPoruka
+	 * @param obj objekat koji zelimo da poredimo
+	 * @return true ako su prosledjeni objekat i objekat ove klase jednaki, a u suprotnom false
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		TwitterPoruka t = (TwitterPoruka)(obj);
