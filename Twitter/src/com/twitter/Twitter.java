@@ -40,6 +40,11 @@ public class Twitter {
 	 * @param maxBroj predstavlja kapacitet pomocnog niza rezultat, odnosno maksimalni broj poruka koje mozemo pronaci
 	 * @param tag predstavlja naziv taga za koji zelimo da pronadjemo sve TwitterPoruke u kojima je upotrebljen
 	 * @return pomocni niz rezultat u kojem se nalaze sve TwitterPoruke koje sadrze zadati tag
+	 * @throws java.lang.RuntimeException ako je vrednost promenljive tag:
+	 * <ul>
+	 * <li> null vrednost
+	 * <li> prazan String
+	 * </ul>
 	 */
 	public TwitterPoruka[] vratiPoruke(int maxBroj, String tag) {
 	if (tag==null || tag.isEmpty())
@@ -48,13 +53,15 @@ public class Twitter {
 	maxBroj = 100;
 	int brojac = 0;
 	TwitterPoruka[] rezultat = new TwitterPoruka[maxBroj];				
-	for (int i = 0; i < poruke.size(); i++)
-	if (poruke.get(i).getPoruka().indexOf(tag)!=-1)
+	for (int i = 0; i < poruke.size(); i++){
+	if (poruke.get(i).getPoruka().indexOf(tag)!=-1){
 	if (brojac < maxBroj){
 	rezultat[brojac]=poruke.get(i);
 	brojac++;
 		}
 	else break;
+	}
+	}
 	return rezultat;
 	} 			
 }

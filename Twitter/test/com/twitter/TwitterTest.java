@@ -32,6 +32,13 @@ public class TwitterTest {
 		assertEquals(t.vratiSvePoruke().getLast(), tp);
 	}
 	
+	@Test
+	public void testUnesi1() {
+		int brojEl=t.vratiSvePoruke().size();
+		t.unesi("Ana", "Cao cao");
+		assertEquals(brojEl+1, t.vratiSvePoruke().size());
+	}
+	
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testVratiPorukeTagNull() {
 		t.vratiPoruke(100, null);
@@ -67,6 +74,26 @@ public class TwitterTest {
 		t.unesi(tp.getKorisnik(), tp.getPoruka());
 		t.unesi(tp1.getKorisnik(), tp1.getPoruka());
 		assertEquals(tp, t.vratiPoruke(1, "cao")[0]);
+	}
+	
+	@Test 
+	public void testVratiPorukeVise() {
+		TwitterPoruka tp = new TwitterPoruka();
+		tp.setKorisnik("Ana");
+		tp.setPoruka("Cao cao");
+		TwitterPoruka tp1 = new TwitterPoruka();
+		tp1.setKorisnik("Milos");
+		tp1.setPoruka("Cao cao");
+		TwitterPoruka tp2 = new TwitterPoruka();
+		tp2.setKorisnik("Milos");
+		tp2.setPoruka("Poruka");
+		t.unesi(tp.getKorisnik(), tp.getPoruka());
+		t.unesi(tp1.getKorisnik(), tp1.getPoruka());
+		t.unesi(tp2.getKorisnik(), tp2.getPoruka());
+		TwitterPoruka[] niz = new TwitterPoruka[10];
+		niz[0]=tp;
+		niz[1]=tp1;
+		assertArrayEquals(niz, t.vratiPoruke(10, "cao"));
 	}
 
 }
